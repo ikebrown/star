@@ -1,0 +1,35 @@
+from django.conf.urls import patterns, include, url
+
+# Uncomment the next two lines to enable the admin:
+from django.contrib import admin
+admin.autodiscover()
+
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'star.views.home', name='home'),
+    # url(r'^star/', include('star.foo.urls')),
+
+    # Uncomment the admin/doc line below to enable admin documentation:
+     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Uncomment the next line to enable the admin:
+     url(r'^admin/', include(admin.site.urls)),
+     url(r'^jobboard/', include('jobboard.urls')),
+
+
+
+
+urlpatterns = patterns(
+    'jobboard.views',
+    (r'^$', 'index', {}, 'jobboard_index'),
+    (r'^jobs/$', 'job_list', {}, 'jobboard_job_list'),
+    (r'^submit_job/$', 'submit_job', {}, 'jobboard_submit_job'),
+    (r'^applicants/$', 'applicant_list', {}, 'jobboard_applicant_list'),
+    (r'^submit_applicant/$', 'submit_applicant',
+     {}, 'jobboard_submit_applicant'),
+    (r'^thank_you/$', 'thank_you', {}, 'jobboard_thank_you'),
+)
+
+
+
+)
